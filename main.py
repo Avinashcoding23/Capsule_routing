@@ -94,3 +94,9 @@ y_pred_final = np.where(y_pred_final > 0.5, 1, 0)
 # Print the performance metrics
 accuracy = np.mean(y_pred_final == test_generator.classes)
 print("Accuracy: ", accuracy)
+
+# Save each model in the ensemble_models list to a separate .h5 file
+for i, model in enumerate(ensemble_models):
+    model_name = f"model_{i}.h5"
+    model.save(model_name)
+
